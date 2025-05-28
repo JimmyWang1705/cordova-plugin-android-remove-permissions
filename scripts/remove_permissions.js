@@ -29,7 +29,7 @@ module.exports = async function(context) {
         if(unwantedPermissions.length){        
             const paths = ['/platforms/android/app/src/main/', 
                            '/platforms/android/app/build/intermediates/bundle_manifest/release/processApplicationManifestReleaseForBundle/',
-                           '/platforms/android/app/platforms/android/app/build/intermediates/packaged_manifests/release/processReleaseManifestForPackage/',
+                           '/platforms/android/app/build/intermediates/packaged_manifests/release/processReleaseManifestForPackage/',
                            '/platforms/android/app/build/intermediates/merged_manifests/release/processReleaseManifest/',
                            '/platforms/android/app/build/intermediates/merged_manifest/debug/processDebugMainManifest/', 
                            '/platforms/android/app/build/intermediates/merged_manifest/release/processReleaseMainManifest/'];
