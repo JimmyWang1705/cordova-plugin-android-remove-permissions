@@ -26,6 +26,7 @@ module.exports = async function(context) {
         if(unwantedPermissions.length){        
             const paths = ['/platforms/android/app/src/main/', '/platforms/android/app/build/intermediates/merged_manifest/debug/processDebugMainManifest/', '/platforms/android/app/build/intermediates/merged_manifest/release/processReleaseMainManifest/'];
             let manifestPath, manifestXml;
+            console.log('unwantedPermissions ', unwantedPermissions.length);
             paths.forEach(path => {  
                 manifestPath = root + path + 'AndroidManifest.xml';
                 if(fs.existsSync(manifestPath)){
