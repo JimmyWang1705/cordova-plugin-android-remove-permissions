@@ -7,6 +7,9 @@ module.exports = async function(context) {
     let config, manifest;
     let unwantedPermissions = [];
     let permissionRemoved = [];
+
+    console.log('in module.exports ');
+    
     //Config
     xml2js.parseString(configXml, function(__err, __res){
         config = __res;  
@@ -24,9 +27,14 @@ module.exports = async function(context) {
             }
         }
         if(unwantedPermissions.length){        
-            const paths = ['/platforms/android/app/src/main/', '/platforms/android/app/build/intermediates/merged_manifest/debug/processDebugMainManifest/', '/platforms/android/app/build/intermediates/merged_manifest/release/processReleaseMainManifest/'];
+            const paths = ['/platforms/android/app/src/main/', 
+                           '/platforms/android/app/build/intermediates/bundle_manifest/release/processApplicationManifestReleaseForBundle/',
+                           '/platforms/android/app/platforms/android/app/build/intermediates/packaged_manifests/release/processReleaseManifestForPackage/',
+                           '/platforms/android/app/build/intermediates/merged_manifests/release/processReleaseManifest/',
+                           '/platforms/android/app/build/intermediates/merged_manifest/debug/processDebugMainManifest/', 
+                           '/platforms/android/app/build/intermediates/merged_manifest/release/processReleaseMainManifest/'];
             let manifestPath, manifestXml;
-            console.log('unwantedPermissions ', unwantedPermissions.length);
+            
             paths.forEach(path => {  
                 manifestPath = root + path + 'AndroidManifest.xml';
                 if(fs.existsSync(manifestPath)){
